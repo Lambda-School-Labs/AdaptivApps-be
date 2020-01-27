@@ -1,9 +1,9 @@
 
 exports.seed = function(knex) {
-  return knex('disability_group')
+  return knex('disability_groups')
     .truncate()
     .then(function () {
-      return knex('disability_group').insert([
+      return knex('disability_groups').insert([
         {id: 1, 
           name: 'Impaired Muscle Power'},
         {id: 2, 

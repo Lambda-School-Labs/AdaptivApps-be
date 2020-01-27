@@ -1,9 +1,9 @@
 
 exports.seed = function(knex) {
-  return knex('gender')
+  return knex('genders')
     .truncate()
     .then(function () {
-      return knex('gender').insert([
+      return knex('genders').insert([
         {id: 1, 
           gender: 'Male'},
         {id: 2, 
