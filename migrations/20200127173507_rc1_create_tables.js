@@ -23,7 +23,7 @@ exports.up = function(knex) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('disability_groupes')
+      .inTable('disability_groups')
       .onUpdate('CASCADE')
       .onDelete('RESTRICT')  
   })    
@@ -46,10 +46,31 @@ exports.up = function(knex) {
       .onUpdate('CASCADE')
       .onDelete('RESTRICT')        
   })     
+  .createTable('user_profiles', tbl => {
+    tbl.increments();
+    tbl.string('username', 60).notNullable().unique();
+    tbl.string('firstname', 128).notNullable();
+    tbl.string('lastname', 128).notNullable();
+    tbl.date('dob');
+    tbl.string('bio', 500);
+    tbl.integer('disability_id')
+      .unsigned()
+      .references('id')
+      .inTable('disabilities')
+      .onUpdate('CASCADE')
+      .onDelete('RESTRICT')  
+    tbl.integer('gender_id')
+      .unsigned()
+      .references('id')
+      .inTable('genders')
+      .onUpdate('CASCADE')
+      .onDelete('RESTRICT')        
+  })       
 }
 
 exports.down = function(knex) {
   return knex.schema
+  .dropTableIfExists('user_profiles')
   .dropTableIfExists('users')
   .dropTableIfExists('disabilities')
   .dropTableIfExists('attendee_types')
