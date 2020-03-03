@@ -61,11 +61,43 @@ const events = async (_, args, context) => {
   return event;
 };
 
+/* Activity QUERIES */
+
+/**
+ * @param {{ where: import('../generated/prisma-client').ActivityWhereUniqueInput }} args
+ * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
+ * @returns { Promise }
+ */
+const activity = async (_, args, context) => {
+  // Returns all profiles
+  const activity = await context.prisma.activity(args.where);
+  // // This next line ensures user needs to be logged in, else return error
+  // const user = await context.user;
+
+  return activity;
+};
+
+/**
+ * @param {{ where: import('../generated/prisma-client').ActivityWhereInput }} args
+ * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
+ * @returns { Promise }
+ */
+const activities = async (_, args, context) => {
+  // Returns all profiles
+  const activity = await context.prisma.activities(args);
+  // // This next line ensures user needs to be logged in, else return error
+  // const user = await context.user;
+
+  return activity;
+};
+
 
 module.exports = {
   profile,
   profiles,
   event,
-  events
+  events,
+  activity,
+  activities
 };
 

@@ -7,10 +7,14 @@
 
 const Query = require('./Query');
 const Mutation = require('./Mutation');
+const Activity = require('./Activity');
+const Event = require('./Event');
 
 const resolvers = {
   Query,
-  Mutation
+  Mutation,
+  Activity,
+  Event
 };
 
 module.exports = resolvers;

@@ -76,13 +76,64 @@ const updateEvent = async (_, args, context) => {
   return event;
 };
 
+/**
+ * @param {{ where: import('../generated/prisma-client').EventWhereUniqueInput }} args
+ * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
+ * @returns { Promise }
+ */
 const deleteEvent = async (_, args, context) => {
-  // Deletes a profile with args passed in
+  // Deletes an Event with args passed in
   const event = context.prisma.deleteEvent(args.where);
   // This next line ensures user needs to be logged in, else return error
   const user = await context.user;
 
   return event;
+};
+
+
+/* ------------------ Activity Mutations --------------- */
+// @ts-check
+
+/**
+ * @param {{ data: import('../generated/prisma-client').ActivityCreateInput }} args
+ * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
+ * @returns { Promise }
+ */
+const createActivity = async (_, args, context) => {
+  // Creates a profile based on args data
+  const activity = context.prisma.createActivity(args.data);
+  // This next line ensures user needs to be logged in, else return error
+  const user = await context.user;
+
+  return activity;
+};
+/**
+ * @param {{ data: import('../generated/prisma-client').ActivityUpdateInput, where: import('../generated/prisma-client').ActivityWhereUniqueInput }} args
+ * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
+ * @returns { Promise }
+ */
+const updateActivity = async (_, args, context) => {
+ // console.log('updateProfile.args: %j', args);
+  // Updates an activity with args passed in
+  const activity = context.prisma.updateActivity(args);
+  // This next line ensures user needs to be logged in, else return error
+  const user = await context.user;
+
+  return activity;
+};
+
+/**
+ * @param {{ where: import('../generated/prisma-client').ActivityWhereUniqueInput }} args
+ * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
+ * @returns { Promise }
+ */
+const deleteActivity = async (_, args, context) => {
+  // Deletes an Activity with args passed in
+  const activity = context.prisma.deleteActivity(args.where);
+  // This next line ensures user needs to be logged in, else return error
+  const user = await context.user;
+
+  return activity;
 };
 
 module.exports = {
@@ -92,4 +143,7 @@ module.exports = {
   createEvent,
   updateEvent,
   deleteEvent,
+  createActivity,
+  updateActivity,
+  deleteActivity
 };

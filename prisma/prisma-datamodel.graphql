@@ -29,5 +29,5 @@ type Activity{
   endTime: String
   type: String!
   details: String
-  event: Event! @relation(link: INLINE, name: "Event")
+  event: Event! @relation(link: INLINE, name: "Activity")
 }
