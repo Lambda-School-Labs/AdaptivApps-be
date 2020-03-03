@@ -6,12 +6,9 @@
  * @returns { Promise }
  */
 const activities = async (parent, _, context) => {
-    console.log("EVent.activities.parent: %j", parent)
-  
+   
     const activity = await context.prisma.event({ id: parent.id }).activities();
   
-    console.log("Event.activities: %j", activity)
-    
     return activity;
   };
   
