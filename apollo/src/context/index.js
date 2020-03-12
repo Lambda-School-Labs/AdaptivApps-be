@@ -61,7 +61,7 @@ const context = async ({ req, connection }) => {
   if (token) {
     const user = new Promise((resolve, reject) => {
       // Verify the token is valid
-      jwt.verify(token, getKey, options, (err, decoded) => {
+      jwt.verify(token, getKey, jwtVerifyOptions, (err, decoded) => {
         if (err) {
           return reject(err);
         }
