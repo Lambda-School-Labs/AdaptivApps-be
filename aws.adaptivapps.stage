@@ -4,3 +4,9 @@ ApolloDockerImage=lambdaschoollabs/adaptivapps-apollo:latest
 
 OAuthTokenEndpoint=https://dev-sxhevmag.auth0.com/oauth/token
 OAuthClientID=gox0c4lyQyHbXec169D1mSBYGB5zxDlo
+
+JwksUri=https://adaptivdev.auth0.com/.well-known/jwks.json
+
+JwtIssuer=adaptivdev.auth0.com
+
+LogLevel=debug
