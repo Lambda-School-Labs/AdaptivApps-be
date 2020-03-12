@@ -1,5 +1,7 @@
-// Imported Yarn dependencies
-const { AuthenticationError, PubSub } = require('apollo-server');
+// @ts-check
+
+// Apollo dependencies
+const { AuthenticationError } = require('apollo-server');
 const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
 // Imported prisma-generated object
@@ -24,9 +26,10 @@ function getKey(header, cb) {
   });
 }
 
-// Specify options
-const options = {
-  issuer: process.env.AUTH0_DOMAIN,
+// Options used for verifying the JWT
+const jwtVerifyOptions = {
+  // Check the issuer to validate the source of the JWT
+  issuer: process.env.JWT_ISSUER,
   algorithms: ['RS256'],
 };
 
