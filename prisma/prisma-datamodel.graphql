@@ -64,7 +64,7 @@ type Chat {
   message: String!
   createdAt: DateTime! @createdAt
   room: ChatRoom @relation(name: "Room")
-  notification: [Notification]! @relation(name: "ChatNotification")
+  notification: [Notification]! @relation(name: "ChatNotification", onDelete: CASCADE)
 }
 
 type ChatRoom {
@@ -80,7 +80,7 @@ type Announcement {
   message: String!
   createdAt: DateTime! @createdAt
   isAnnouncementRoom: Boolean! 
-  notification: [Notification]! @relation(name: "AnnouncementNotification")
+  notification: [Notification]! @relation(name: "AnnouncementNotification", onDelete: CASCADE)
 }
 
 type Notification {
